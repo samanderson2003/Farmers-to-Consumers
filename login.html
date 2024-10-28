@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Login</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Farm Tech</title>
+	<meta name="theme-color" content="#c9e0e04d">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport"
+	  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="shortcut icon" href="./img/favicons/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="./img/favicons/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="./img/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="./img/favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="./img/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon-180x180.png">
+	<link rel="stylesheet" href="style.css">
+	<style>
+		/* Global styles */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			font-family: 'Montserrat', sans-serif;
+		}
+		.navbar {
+			background-color: #212529;
+		}
+		.navbar-brand, .navbar-nav .nav-link {
+			color: #fff;
+		}
+		.navbar-nav .nav-link:hover {
+			color: #a11616;
+		}
+		.navbar-brand:hover {
+			color: #fff;
+		}
+		.navbar-brand {
+			margin: 0 auto; /* Center the title */
+		}
+		.footer {
+			background-color: #f8f9fa;
+			padding: 20px 0;
+			text-align: center;
+		}
+		.container {
+			max-width: 800px;
+			margin: 40px auto;
+			padding: 0 20px;
+		}
+		form {
+			background-color: rgba(255, 255, 255, 0.8);
+			backdrop-filter: blur(5px);
+			padding: 40px;
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+		}
+		.login-form input[type="text"],
+		.login-form input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ced4da;
+			border-radius: 5px;
+			margin-bottom: 20px;
+			font-size: 16px;
+			color: #212529;
+			background: #fff;
+			transition: all 0.3s ease;
+		}
+		.login-form input[type="text"]:focus,
+		.login-form input[type="password"]:focus {
+			border-color: #0069d9;
+			box-shadow: 0 0 0 0.2rem rgba(0, 105, 217, 0.25);
+		}
+		.login-form input[type="submit"] {
+			background: #007bff;
+			border: none;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 600;
+			padding: 12px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		.login-form input[type="submit"]:hover {
+			background: #0069d9;
+		}
+	</style>
+</head>
+<body>
+	<body>
+		<header class="wrapper-full">
+		  <div class="header">
+			<!-- Mobile Menu -->
+			<div id="toggle">
+			  <input type="checkbox">
+			  <span></span>
+			</div>
+			<div id="mobile-menu__bg">
+			</div>
+			<!-- /Mobile Menu -->
+			<a href="/">
+			  <img src="img/site_logo.png" alt="">
+			</a>
+		</header>
+		<br>
+		<br>
+		<br>
+		<br><br><br><br>
+	<div class="container">
+		<form class="login-form" action="index.html">
+			<h2 class="text-center mb-4">User Login</h2>
+			<br>
+			<input type="text" id="username" name="username" placeholder="Username" required>
+			<input type="password" id="password" name="password" placeholder="Password" required>
+			<input type="submit" value="Login">
+		</form>
+	</div>
+	<div class="footer">
+		<div class="container">
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

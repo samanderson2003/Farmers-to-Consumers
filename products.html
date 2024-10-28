@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Farm Tech</title>
+  <meta name="theme-color" content="#c9e0e04d">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="shortcut icon" href="./img/favicons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="./img/favicons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="57x57" href="./img/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./img/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./img/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./img/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./img/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./img/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon-180x180.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add CSS to style the item menu */
+    .categories {
+      background-color: #f2f2f2;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .categories ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .categories li {
+      display: inline-block;
+      margin-right: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .categories li.active {
+      color: #ff5733; /* Change the color for the active category */
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start; /* Change from "space-between" to "flex-start" */
+      gap: 20px; /* Add this line to set the gap between items */
+      padding: 20px;
+    }
+
+    .item {
+      flex: 0 0 calc(33.333% - 20px); /* Adjust the width of each item based on your layout */
+      background-color: #fff;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+    }
+
+    .item img {
+      max-width: 100%;
+      height: 300px;
+    }
+
+    .item h3 {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 14px;
+      color: #ff5733; /* Change the price color as needed */
+    }
+
+    .add-to-cart-button {
+      background-color: #ff5733;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .add-to-cart-button:hover {
+      background-color: #e6452f;
+    }
+
+    .cart {
+      background-color: #f2f2f2;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cart-remove-button {
+      background-color: #e6452f;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .cart-remove-button:hover {
+      background-color: #c63326;
+    }
+
+    .checkout-button {
+      background-color: #ff5733;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .checkout-button:hover {
+      background-color: #e6452f;
+    }
+
+    /* Add CSS for the slider */
+    .item-slider {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .item-slider input[type="range"] {
+      width: 100%;
+    }
+
+    .slider-value {
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header class="wrapper-full">
+    <div class="header">
+      <!-- Mobile Menu -->
+      <div id="toggle">
+        <input type="checkbox">
+        <span></span>
+      </div>
+      <div id="mobile-menu__bg"></div>
+      <!-- /Mobile Menu -->
+      <a href="/">
+        <img src="img/site_logo.png" alt="">
+      </a>
+      <div class="header__hav">
+        <nav class="header__hav--items">
+          <ul>
+            <li>
+              <a class="nav-link" href="/">HOME</a>
+            </li>
+            <li>
+              <a class="nav-link" href="#products">PRODUCTS</a>
+            </li>
+          </ul>
+        </nav>
+        <a href="#" class="color-button">Get in Touch</a>
+      </div>
+    </div>
+  </header>
+  <div class="full-width-slider">
+    <ul class="slides">
+      <li class="selected">
+        <div>
+          <p class="__name ">AGRO</p>
+          <h2>FARMING COMPANY</h2>
+          <p class="selected__lead">From the Heart from a Farmer to your home</p>
+          <a class="selected__button" href="#products">OUR PRODUCTS</a>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p id class="__name ">AGRO</p>
+          <h2>BEST HARVEST<br>
+            <span>IN THE WORLD</span>
+          </h2>
+          <a class="selected__button" href="#">DISCOVER</a>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="__name ">AGRO</p>
+          <h2>Live<span>stock</span></h2>
+          <a class="selected__button" href="#">DISCOVER</a>
+        </div>
+      </li>
+    </ul> <!-- slides -->
+    <ol class="slider-dots-navigation">
+      <li><a href="#0" class="selected">1</a></li>
+      <li><a href="#0">2</a></li>
+      <li><a href="#0">3</a></li>
+    </ol>
+  </div> <!-- full-width-slider -->
+  <main>
+    <div id="products" class="categories">
+      <ul>
+        <li class="active" data-category="all">All</li>
+        <li data-category="fruits">Fruits</li>
+        <li data-category="vegetables">Vegetables</li>
+        <li data-category="livestock">Livestock</li>
+        <li data-category="sunflowers">Sunflowers</li>
+        <li data-category="wheat">Wheat</li>
+        <li data-category="spices">Spices</li>
+      </ul>
+    </div>
+    <div class="items">
+      <!-- Random items for each category -->
+      <div class="item" data-category="fruits">
+        <img src="apple.jpg" alt="Apple">
+        <h3>Apple</h3>
+        <p class="price">Price per kg: ₹500</p>
+        <input class="item-slider" type="range" min="0.5" max="10" step="0.5" value="0.5">
+        <div class="slider-value">Selected Quantity: <span id="apple-quantity">0.5</span> kg</div>
+        <button class="add-to-cart-button" onclick="addToCart('Apple', 500)">Add to Cart</button>
+      </div>
+      <div class="item" data-category="fruits">
+        <img src="banana.jpg" alt="Banana">
+        <h3>Banana</h3>
+        <p class="price">Price per kg: ₹300</p>
+        <input class="item-slider" type="range" min="0.5" max="10" step="0.5" value="0.5">
+        <div class="slider-value">Selected Quantity: <span id="banana-quantity">0.5</span> kg</div>
+        <button class="add-to-cart-button" onclick="addToCart('Banana', 300)">Add to Cart</button>
+      </div>
+      <div class="item" data-category="vegetables">
+        <img src="carrot.jpg" alt="Carrot">
+        <h3>Carrot</h3>
+        <p class="price">Price per kg: ₹200</p>
+        <input class="item-slider" type="range" min="0.5" max="10" step="0.5" value="0.5">
+        <div class="slider-value">Selected Quantity: <span id="carrot-quantity">0.5</span> kg</div>
+        <button class="add-to-cart-button" onclick="addToCart('Carrot', 200)">Add to Cart</button>
+      </div>
+      <div class="item" data-category="vegetables">
+        <img src="tomato.jpg" alt="Tomato">
+        <h3>Tomato</h3>
+        <p class="price">Price per kg: ₹250</p>
+        <input class="item-slider" type="range" min="0.5" max="10" step="0.5" value="0.5">
+        <div class="slider-value">Selected Quantity: <span id="tomato-quantity">0.5</span> kg</div>
+        <button class="add-to-cart-button" onclick="addToCart('Tomato', 250)">Add to Cart</button>
+      </div>
+      <div class="item" data-category="livestock">
+        <img src="cow.jpg" alt="Cow">
+        <h3>Cow</h3>
+        <p class="price">Price varies<br> Contact us</p>
+        
+        
+        
+      </div>
+      <div class="item" data-category="livestock">
+        <img src="chicken.jpg" alt="Chicken">
+        <h3>Chicken</h3>
+        <p class="price">Price varies <br> Contact us</p>
+        <input class="item-slider" type="range" min="1" max="10" step="1" value="1">
+        <div class="slider-value">Selected Quantity: <span id="chicken-quantity">1</span></div>
+      </div>
+      <div class="item" data-category="sunflowers">
+        <img src="sunflower.jpg" alt="Sunflower">
+        <h3>Sunflower</h3>
+        <p class="price">Price per kg: ₹150</p>
+        <input class="item-slider" type="range" min="0.5" max="10" step="0.5" value="0.5">
+        <div class="slider-value">Selected Quantity: <span id="sunflower-quantity">0.5</span> kg</div>
+        <button class="add-to-cart-button" onclick="addToCart('Sunflower', 150)">Add to Cart</button>
+      </div>
+      <div class="item" data-category="wheat">
+        <img src="wheat.jpg" alt="Wheat">
+        <h3>Wheat</h3>
+        <p class="price">Price per kg: ₹100</p>
+        <input class="item-slider" type="range" min="0.5" max="10" step="0.5" value="0.5">
+        <div class="slider-value">Selected Quantity: <span id="wheat-quantity">0.5</span> kg</div>
+        <button class="add-to-cart-button" onclick="addToCart('Wheat', 100)">Add to Cart</button>
+      </div>
+<!-- HTML -->
+<div class="item" data-category="spices">
+  <img src="spice1.jpg" alt="Spice">
+  <h3>Spice</h3>
+  <p class="price">Price per 100g: ₹5</p>
+  <input class="item-slider" type="range" min="0.1" max="1" step="0.1" value="0.1">
+  <div class="slider-value">Selected Quantity: <span id="spice1-quantity">0.1</span> kg</div>
+  <button class="add-to-cart-button" onclick="addToCart('Spice', 5, 'spice1')">Add to Cart</button>
+</div>
+
+<div class="item" data-category="spices">
+  <img src="spice2.jpg" alt="Spice">
+  <h3>Spice</h3>
+  <p class="price">Price per 100g: ₹10</p>
+  <input class="item-slider" type="range" min="0.1" max="1" step="0.1" value="0.1">
+  <div class="slider-value">Selected Quantity: <span id="spice2-quantity">0.1</span> kg</div>
+  <button class="add-to-cart-button" onclick="addToCart('Spice', 10, 'spice2')">Add to Cart</button>
+</div>
+
+    </div>
+
+    <!-- Cart Display -->
+    <div class="cart">
+      <h2>Shopping Cart</h2>
+      <div class="cart-items">
+        <!-- Cart items will be displayed here -->
+      </div>
+      <p class="total-amount">Total Amount: ₹0</p>
+      <br>
+      <a class="checkout-button" href="payment.html">Proceed to Checkout</a> <!-- Added href attribute with the link to payment.html -->
+    </div>
+  </main>
+  <script src="script.js" defer></script>
+  <script>
+    // Cart data structure
+    const cart = [];
+
+    // Function to add an item to the cart
+    function addToCart(itemName, itemPrice) {
+      let quantityElement;
+      if (itemName === 'Spice') {
+        const quantity1 = parseFloat(document.querySelector(`#spice1-quantity`).textContent);
+        const quantity2 = parseFloat(document.querySelector(`#spice2-quantity`).textContent);
+        const totalQuantity = quantity1 + quantity2;
+        const totalItemPrice = (totalQuantity * itemPrice).toFixed(2);
+
+        const newItem = {
+          name: itemName,
+          quantity: totalQuantity,
+          price: itemPrice,
+          total: `₹${totalItemPrice}`,
+        };
+
+        cart.push(newItem);
+      } else {
+        quantityElement = document.querySelector(`#${itemName.toLowerCase()}-quantity`);
+        const itemQuantity = parseFloat(quantityElement.textContent);
+        const totalItemPrice = (itemQuantity * itemPrice).toFixed(2);
+
+        const newItem = {
+          name: itemName,
+          quantity: itemQuantity,
+          price: itemPrice,
+          total: `₹${totalItemPrice}`,
+        };
+
+        cart.push(newItem);
+      }
+
+      // Update the cart display
+      displayCart();
+    }
+
+    // Function to display the cart
+    function displayCart() {
+      const cartItemsElement = document.querySelector('.cart-items');
+      cartItemsElement.innerHTML = '';
+
+      let totalAmount = 0;
+
+      cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        const cartItemName = document.createElement('div');
+        cartItemName.classList.add('cart-item-name');
+        cartItemName.textContent = `${item.name} (${item.quantity} kg)`;
+
+        const cartItemPrice = document.createElement('div');
+        cartItemPrice.classList.add('cart-item-price');
+        cartItemPrice.textContent = item.total;
+
+        const cartRemoveButton = document.createElement('button');
+        cartRemoveButton.classList.add('cart-remove-button');
+        cartRemoveButton.textContent = 'Remove';
+        cartRemoveButton.addEventListener('click', () => {
+          removeCartItem(item);
+        });
+
+        cartItem.appendChild(cartItemName);
+        cartItem.appendChild(cartItemPrice);
+        cartItem.appendChild(cartRemoveButton);
+
+        cartItemsElement.appendChild(cartItem);
+
+        // Calculate the total amount
+        totalAmount += parseFloat(item.total.replace('₹', ''));
+      });
+
+      // Update the total amount
+      const totalAmountElement = document.querySelector('.total-amount');
+      totalAmountElement.textContent = `Total Amount: ₹${totalAmount.toFixed(2)}`;
+    }
+
+    // Function to remove an item from the cart
+    function removeCartItem(itemToRemove) {
+      const itemIndex = cart.findIndex(item => item === itemToRemove);
+
+      if (itemIndex !== -1) {
+        cart.splice(itemIndex, 1);
+      }
+
+      // Update the cart display
+      displayCart();
+    }
+
+    // Function to proceed to checkout
+    function checkout() {
+      // You can implement the checkout functionality here
+      // For now, let's just clear the cart
+      cart.length = 0;
+
+      // Update the cart display
+      displayCart();
+      alert('Checkout successful! Cart has been cleared.');
+    }
+
+    // Update slider values and quantities
+    const sliders = document.querySelectorAll('.item-slider');
+    sliders.forEach(slider => {
+      slider.addEventListener('input', () => {
+        const itemName = slider.parentElement.querySelector('h3').textContent;
+        const quantityElement = slider.parentElement.querySelector('.slider-value span');
+        quantityElement.textContent = slider.value;
+
+        // Check if the item is a Spice and update both Spice items
+      });
+    });
+
+    // Category filtering
+    const categoryButtons = document.querySelectorAll('.categories li');
+    const items = document.querySelectorAll('.item');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        const category = button.getAttribute('data-category');
+
+        items.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+  <footer>
+    <hr>
+    <div class="wrapper">
+      <div class="footer">
+        <div class="footer--top">
+          <div class="footer--top__links">
+            <div class="logo">
+              <a href="#"><img src="img/site_logo.png" alt="logo"></a>
+            </div>
+            <div class="text">
+              <p>Kumara Guru</p>
+              <p>Sri Krishna Arts and Science College</p>
+              <p>Coimbatore - 631027</p>
+              <p>9344334635</p>
+            </div>
+          </div>
+          <div class="footer--top__social">
+            <ul>
+              <!-- Add your social media links here if needed -->
+            </ul>
+          </div>
+          <div class="footer--top__subscribe">
+            <h5>GET A NEWSLETTER</h5>
+            <form name="subscribe" action="">
+              <div>
+                <input placeholder="Your E-mail" type="text">
+              </div>
+              <button class="transparent-button">SUBSCRIBE</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer--bottom">
+          <div class="footer--bottom__menu">
+            <nav>
+              <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/products">PRODUCTS</a></li>
+                <li><a href="/contacts">CONTACTS</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
